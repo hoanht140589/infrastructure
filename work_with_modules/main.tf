@@ -24,12 +24,18 @@ terraform {
 #  vm_ip = "172.23.33.29"
 #  vm_disk_size = "70"
 #}
-module "vsphere_new"{
-  source = "../modules/infrastructure/vsphere_new"
-  vm_ip = ["172.23.33.30","172.23.33.31"]
-  vm_env = "test-server" 
-  vm_resource = "172.23.45.15"
-#  vm_datastore = "datastore_vm05"
+module "vsphere_cluster"{
+  source = "../modules/vsphere_cluster"
   vsphere_datacenter = "IDC"
-#  vm_template = "template_02"
+  vm_domain = ""
+  vm_name = "test-server"
+  vsphere_cluster = "TW-CODE88-01"
+  vm_ip = ["172.23.9.14","172.23.9.15"]
+  vm_network = "Code88_Internal"
+  vm_netmask = "24"
+  vm_gateway = "172.23.9.254"
+  vm_dns = "172.23.9.1"
+  vm_template = "template_02"
+  vm_datastore = "Shared-DS-C88-01"
+  vm_linked_clone = "false"
 }
