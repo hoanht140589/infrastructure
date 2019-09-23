@@ -41,6 +41,8 @@ data "vsphere_virtual_machine" "template" {
   name                      = "${var.vm_template}"
   datacenter_id             = "${data.vsphere_datacenter.datacenter.id}"
 }
+
+variable "module_name" {}
 ######################
 ###vSphere Resources###
 ######################

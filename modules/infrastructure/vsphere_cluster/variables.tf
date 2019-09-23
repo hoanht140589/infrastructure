@@ -14,6 +14,7 @@ variable "vsphere_cluster" {
 }
 
 
+
 ######################
 ## vSphere Machine ###
 ######################
