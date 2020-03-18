@@ -21,9 +21,9 @@
 - Compartible with Terraform 0.12 or above.
 
 #How to use this
-# You have to edit ./modules/global_variables/variables.tf with your Vcenter information.
-# After that, you can come to ./main_execution/main.tf. There is a sample block.
-# Copy or edit that block with your VM information.
-# You also need to installing terraform.
-# This feature is tested on linux. You may need to make some test with Windows :D
+- You have to edit ./modules/global_variables/variables.tf with your Vcenter information.
+- After that, you can come to ./main_execution/main.tf. There is a sample block.
+- Copy or edit that block with your VM information.
+- You also need to installing terraform.
+- This feature is tested on linux. You may need to make some test with Windows :D
 
