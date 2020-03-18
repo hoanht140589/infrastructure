@@ -3,8 +3,6 @@
 #Modules contains all defined modules.
 #sandbox for execute(test).
 
-
-
 #Achived
 - Create 1 VM with specifics information(refer to main.tf in sandbox)
 
@@ -21,9 +19,6 @@
 - Minor bug on vm_ram: it should be number devine to 1024.
 - Still not enable to add multiple NICs.
 - Compartible with Terraform 0.12 or above.
-
-
-
 
 #How to use this
 # You have to edit ./modules/global_variables/variables.tf with your Vcenter information.
