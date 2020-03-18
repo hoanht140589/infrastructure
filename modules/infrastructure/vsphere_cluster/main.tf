@@ -43,12 +43,28 @@ data "vsphere_virtual_machine" "template" {
 }
 
 variable "module_name" {}
+<<<<<<< HEAD
+variable "var_disks" {
+  default = [
+    {
+      unit_number = 0
+      size = "40"
+    },
+  ]
+}
+
+=======
+>>>>>>> 970590400ab73261461ef2bc64f12726927e5904
 ######################
 ###vSphere Resources###
 ######################
 resource "vsphere_virtual_machine" "machine" {
   count = length("${var.vm_ip}")
+<<<<<<< HEAD
+  name                      = "${var.vm_name}"
+=======
   name                      = "${var.vm_name}-0${count.index + 1}"
+>>>>>>> 970590400ab73261461ef2bc64f12726927e5904
   resource_pool_id          = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
   datastore_id              = "${data.vsphere_datastore.datastore.id}"
 
@@ -60,6 +76,22 @@ resource "vsphere_virtual_machine" "machine" {
     network_id              = "${data.vsphere_network.network.id}"
     adapter_type            = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
   }
+<<<<<<< HEAD
+  dynamic "disk" {
+    for_each = [for s in "${var.var_disks}": {
+        label = s.unit_number == "0" ? "${var.vm_name}.vmdk" : "${var.vm_name}_0${s.unit_number}.vmdk"
+        unit_number = s.unit_number
+        size = s.size
+      }]
+    content {
+        label                   = disk.value.label
+        unit_number             = disk.value.unit_number
+        size                    = disk.value.size
+        eagerly_scrub           = "${data.vsphere_virtual_machine.template.disks.0.eagerly_scrub}"
+        thin_provisioned        = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
+    }
+  }
+=======
 
   disk {
     label                   = "${var.vm_name}-0${count.index + 1}.vmdk"
@@ -69,6 +101,7 @@ resource "vsphere_virtual_machine" "machine" {
     thin_provisioned        = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
   }
 
+>>>>>>> 970590400ab73261461ef2bc64f12726927e5904
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
     linked_clone  = "${var.vm_linked_clone}"
@@ -90,3 +123,7 @@ resource "vsphere_virtual_machine" "machine" {
     }
   }
 }
+<<<<<<< HEAD
+#resource "vsphere_"
+=======
+>>>>>>> 970590400ab73261461ef2bc64f12726927e5904

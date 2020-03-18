@@ -2,6 +2,54 @@ terraform {
   required_version = ">= 0.12"
 }
 
+<<<<<<< HEAD
+module "vm_machine01" {
+  var_disks = [{
+     unit_number = 0
+     size = "50"
+  },
+  {
+     unit_number = 1
+     size = "70"
+  }
+  ]
+  source = "../modules/infrastructure/vsphere_cluster"
+  vsphere_datacenter = "V-Datacenter"
+  module_name = "test_machine_01"
+  vm_name = "test-machine-01"
+  vm_cpu = 8
+  vm_ram = 16384
+  vm_domain = ""
+  vsphere_cluster = "CLUSTER-01"
+  vm_ip = ["127.0.0.1"]
+  vm_network = "localhost"
+  vm_netmask = "24"
+  vm_gateway = "127.0.0.1"
+  vm_dns = "127.0.0.1"
+  vm_template = "ubuntu16_baseos"
+  vm_datastore = "datastore01"
+  vm_linked_clone = "false"
+}
+module "vm_machine02" {
+  source = "../modules/infrastructure/vsphere_cluster"
+  vsphere_datacenter = "V-Datacenter"
+  module_name = "test_machine_02"
+  vm_name = "test-machine-02"
+  vm_cpu = 8
+  vm_ram = 16384
+  vm_domain = ""
+  vsphere_cluster = "CLUSTER-01"
+  vm_ip = ["127.0.0.1"]
+  vm_network = "localhost"
+  vm_netmask = "24"
+  vm_gateway = "127.0.0.1"
+  vm_dns = "127.0.0.1"
+  vm_template = "ubuntu16_baseos"
+  vm_datastore = "datastore01"
+  vm_linked_clone = "false"
+}
+
+=======
 #module "vsphere_hosts"{
 #  source = "../modules/infrastructure/vsphere_hosts"
 #  vsphere_vcenter = "vcenter01"
@@ -72,3 +120,4 @@ module "machine_02" {
   vm_datastore = "Shared-DS-C88-01"
   vm_linked_clone = "false"
 }
+>>>>>>> 970590400ab73261461ef2bc64f12726927e5904
