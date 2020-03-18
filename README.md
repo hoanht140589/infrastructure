@@ -8,8 +8,6 @@
 #Achived
 - Create 1 VM with specifics information(refer to main.tf in sandbox)
 
-
-<<<<<<< HEAD
 #Change log 1.1
 - Create multiple VMs with Host module. Done
 - Do the same with Cluster module.
@@ -33,9 +31,4 @@
 # Copy or edit that block with your VM information.
 # You also need to installing terraform.
 # This feature is tested on linux. You may need to make some test with Windows :D
-=======
-#Tasks for Implementing September 2019.
-- Create multiple VMs with Host module. Done
-- Do the same with Cluster module.
-- Clean code.
->>>>>>> 970590400ab73261461ef2bc64f12726927e5904
+
