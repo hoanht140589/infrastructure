@@ -22,7 +22,8 @@ data "vsphere_compute_cluster" "cluster" {
 }
 
 data "vsphere_datastore" "datastore"{
-  name                      = "${var.vm_datastore}"
+  count = length("${var.vm_datastore}")
+  name                      = "${var.vm_datastore[count.index]}"
   datacenter_id             = "${data.vsphere_datacenter.datacenter.id}"
 }
 
@@ -51,7 +52,7 @@ resource "vsphere_virtual_machine" "machine" {
   count = length("${var.vm_name}")
   name                      = "${var.vm_name[count.index]}"
   resource_pool_id          = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
-  datastore_id              = "${data.vsphere_datastore.datastore.id}"
+  datastore_id              = "${data.vsphere_datastore.datastore[count.index].id}"
 
   num_cpus                  = "${var.vm_cpu[count.index]}"
   memory                    = "${var.vm_ram[count.index]}"
